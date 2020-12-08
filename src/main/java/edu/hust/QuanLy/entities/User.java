@@ -2,6 +2,7 @@ package edu.hust.QuanLy.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,8 +13,8 @@ import lombok.Data;
 @Table(name = "user")
 public class User {
     @Id
-    @Column(name = "id", length = 10)
-    private String id;
+    @GeneratedValue
+    private int id;
     @Column(name = "email")
     private String email;
     @Column(name = "password")

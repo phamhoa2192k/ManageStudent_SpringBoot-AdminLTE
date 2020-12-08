@@ -18,33 +18,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class MainController{
     @Autowired
     private UserRepository userRepository;
-
-    String email;
-
     @GetMapping({"/","/login"})
-    public String getLoginPage(){
+    public String login(){
         return "login";
     }
 
     @PostMapping(value="/login")
-    public String checkLogIn(@RequestParam String email, @RequestParam String password, Model model) {
+    public String postMethodName(@RequestParam String email, @RequestParam String password, Model model) {
         User u = userRepository.findUserByEmailAndPassword(email, password);
         if(u == null){
             model.addAttribute("warn", "Email or password not found!");
             return  "login";
         }
-        else{
-            this.email = email;
-           // model.addAttribute("email", this.email);
-            return "redirect:/dashboard";
-        }
-            
+        else
+            return "redirect:/logged";
     }
 
-    @GetMapping("/dashboard")
-    public String getDashboardPage(Model model){
-        model.addAttribute("email", this.email);
-        return "dashboard";
+    @GetMapping("/logged")
+    public String logged(Model model, User user){
+        return "main";
     }
     
 }
