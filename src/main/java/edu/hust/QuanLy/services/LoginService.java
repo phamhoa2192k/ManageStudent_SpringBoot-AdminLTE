@@ -3,6 +3,6 @@ package edu.hust.QuanLy.services;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LoginService {
-    
+public interface LoginService {
+    public Boolean checkLoginForm(String email,String password);
 }

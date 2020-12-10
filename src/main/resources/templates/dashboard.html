@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="https://www.thymeleaf.org">
 <head>
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <style th:replace="/components/style/style"></style>
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
@@ -17,13 +17,15 @@
             <div class="content">
                 <!------------------------ CONTENT ------------------------------------------>
 
-
-
-
-
+                <div th:replace="components/box/small_box"></div>
+                <div th:replace="components/charts/bar_chart"></div>
+                <div th:replace="components/charts/pie_chart"></div>
+        
                 <!------------------------ END CONTENT ------------------------------------>       
             </div>
-            <div class="content-footer container-fluid"></div>
+            <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+              </a>
         </div>
         <!-- FOOTER -->
         <footer th:replace="/components/footer"></footer>
@@ -31,6 +33,6 @@
         <!-- FOOTER -->
     </div>
 <script th:replace="/components/style/script"></script>
-<script th:replace="/components/charts/chartjs"></script>
+<script src="./custom/js/chart.js"></script>
 </body>
 </html>

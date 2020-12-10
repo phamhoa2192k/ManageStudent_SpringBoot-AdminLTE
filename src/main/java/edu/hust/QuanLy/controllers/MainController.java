@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,35 +7,56 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.hust.QuanLy.entities.User;
-import edu.hust.QuanLy.repositories.UserRepository;
+import edu.hust.QuanLy.services.LoginService;
 
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping("/")
 public class MainController{
+    private String emailOfUser;
     @Autowired
-    private UserRepository userRepository;
+    private LoginService loginService;
     @GetMapping({"/","/login"})
-    public String login(){
+    public String getloginPage(){
         return "login";
     }
 
-    @PostMapping(value="/login")
-    public String postMethodName(@RequestParam String email, @RequestParam String password, Model model) {
-        User u = userRepository.findUserByEmailAndPassword(email, password);
-        if(u == null){
+    @PostMapping("/login")
+    public String postLoginForm(@RequestParam String email, @RequestParam String password, Model model) {
+        if(!loginService.checkLoginForm(email, password)){
             model.addAttribute("warn", "Email or password not found!");
             return  "login";
         }
-        else
-            return "redirect:/logged";
+        else{
+            this.emailOfUser = email;
+            return "redirect:/home";
+        }
+            
     }
 
-    @GetMapping("/logged")
-    public String logged(Model model, User user){
-        return "main";
+    @GetMapping("/logout")
+    public String logged(){
+        return "/logged";
     }
+
+    @GetMapping("/home")
+    public String getHomePage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "homepage";
+    }
+
+    @GetMapping("/dashboard")
+    public String getDashboardPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "dashboard";
+    }
+
+    @GetMapping("/news")
+    public String getNewsPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "news";
+    }
+    
     
 }
