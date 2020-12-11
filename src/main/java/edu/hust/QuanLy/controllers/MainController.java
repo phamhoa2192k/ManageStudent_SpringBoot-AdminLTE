@@ -34,7 +34,6 @@ public class MainController{
         }
             
     }
-
     @GetMapping("/logout")
     public String logged(){
         return "/logged";
@@ -58,5 +57,28 @@ public class MainController{
         return "news";
     }
     
+    @GetMapping("/calender")
+    public String getCalenderPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "calender";
+    }
+
+    @GetMapping("/book")
+    public String getBookPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "book";
+    }
+
+    @GetMapping("/exam")
+    public String getExamPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "exam";
+    }
+
+    @GetMapping("/contact")
+    public String getContactPage(Model model){
+        model.addAttribute("emailOfUser", this.emailOfUser);
+        return "contact";
+    }
     
 }

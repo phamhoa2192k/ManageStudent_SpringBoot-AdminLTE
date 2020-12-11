@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="https://www.thymeleaf.org">
 <head>
-    <title>Home Page</title>
+    <title>Calender</title>
     <style th:replace="/components/style/style"></style>
+    <link rel="stylesheet" href="adminlte/plugins/fullcalendar/main.min.css">
+    <link rel="stylesheet" href="adminlte/plugins/fullcalendar-daygrid/main.min.css">
+    <link rel="stylesheet" href="adminlte/plugins/fullcalendar-timegrid/main.min.css">
+    <link rel="stylesheet" href="adminlte/plugins/fullcalendar-bootstrap/main.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
     <div class="wrapper">
@@ -13,11 +17,11 @@
         <div class="content-wrapper">
             <div class="container-fluid">
                 <section class="content-header container-fluid">
-                    <h3>Home Page</h4>
+                    <h3>Calender</h4>
                 </section>
                 <div class="content">
                     <!------------------------ CONTENT ------------------------------------------>
-
+                    <div th:replace="components/calender"></div>
                     <!------------------------ END CONTENT ------------------------------------>
                 </div>
                 <div class="content-footer container-fluid"></div>
@@ -29,5 +33,12 @@
         </a>
     </div>
     <script th:replace="components/style/script.html"></script>
+    <script src="adminlte/plugins/moment/moment.min.js"></script>
+    <script src="adminlte/plugins/fullcalendar/main.min.js"></script>
+    <script src="adminlte/plugins/fullcalendar-daygrid/main.min.js"></script>
+    <script src="adminlte/plugins/fullcalendar-timegrid/main.min.js"></script>
+    <script src="adminlte/plugins/fullcalendar-interaction/main.min.js"></script>
+    <script src="adminlte/plugins/fullcalendar-bootstrap/main.min.js"></script>
+    <script src="custom/js/calender.js"></script>
 </body>
 </html>
