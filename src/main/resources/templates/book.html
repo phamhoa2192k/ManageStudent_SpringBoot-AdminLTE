@@ -25,6 +25,9 @@
         <footer th:replace="/components/footer"></footer>
     </div>
     <script th:replace="components/style/script.html"></script>
+    <script>
+        $("a[name^='book']").addClass("active");
+    </script>
 </body>
 
 </html>

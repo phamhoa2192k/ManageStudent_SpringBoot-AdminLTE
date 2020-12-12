@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link elevation-4">
-      <img src="./adminlte/dist/img/AdminLTELogo.png"
+      <img src="adminlte/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
@@ -13,7 +13,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="/adminlte/dist/img/user_logo.png" class="img-circle elevation-2" alt="User Image">
+          <img src="adminlte/dist/img/user_logo.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block" th:text="${emailOfUser}"></a>
@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->
           
           <li class="nav-item">
-            <a href="/dashboard" class="nav-link">
+            <a href="/dashboard" class="nav-link" name = "dashboard">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -35,16 +35,16 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="/news" class="nav-link">
+          <li class="nav-item">
+            <a href="/news" class="nav-link" name = "news">
               <i class="nav-icon far fa-newspaper"></i>
               <p>
                 News            
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" name = "chart">
+            <a href="#" class="nav-link" name = "chart">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Charts
@@ -53,7 +53,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartjs.html" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>ChartJS</p>
                 </a>
@@ -72,8 +72,8 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview" name = "form">
+            <a href="#" class="nav-link" name = "form">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Forms
@@ -82,33 +82,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../forms/general.html" class="nav-link">
+                <a href="/form_student" class="nav-link" name = "form_student">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General Elements</p>
+                  <p>Student</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../forms/advanced.html" class="nav-link">
+                <a href="/form_teacher" class="nav-link" name = "form_teacher">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/editors.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Editors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../forms/validation.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Validation</p>
+                  <p>Teacher</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" name = "table">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Tables
@@ -138,7 +126,7 @@
           </li>
           <li class="nav-header">SCHEDULE</li>
           <li class="nav-item">
-            <a href="/calender" class="nav-link">
+            <a href="/calender" class="nav-link" name = "calender">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Calendar
@@ -177,21 +165,17 @@
           </li>
           <li class="nav-header">DOCUMENTATION</li>
           <li class="nav-item">
-            <a href="/book" class="nav-link">
+            <a href="/book" class="nav-link" name = "book">
               <i class="nav-icon fas fa-book"></i>
               <p>Books</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/exam" class="nav-link">
+            <a href="/exam" class="nav-link" name = "exam">
               <i class="nav-icon fas fa-file"></i>
               <p>Exam</p>
             </a>
-          </li>
-
-
-
-          
+          </li>        
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
