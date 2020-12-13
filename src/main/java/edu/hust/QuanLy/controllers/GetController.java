@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hust.QuanLy.services.CurrentUserService;
+import edu.hust.QuanLy.services.InfomationForUIService;
 
 @Controller
 @RequestMapping("/")
 public class GetController{
     @Autowired
     private CurrentUserService currentUserService;
+    @Autowired
+    private InfomationForUIService infomationForUIService;
 
     @GetMapping({"/","/login"})
     public String getloginPage(){
@@ -69,6 +72,7 @@ public class GetController{
     @GetMapping(value="/form_student")
     public String getStudentForm(Model model) {
         model.addAttribute("emailOfUser", currentUserService.getCurrentUser());
+        model.addAttribute("classrooms", infomationForUIService.getAllClassrooms());
         return "form_student";
     }
 

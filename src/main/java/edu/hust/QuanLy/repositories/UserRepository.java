@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.hust.QuanLy.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, String> {
     User findUserByEmailAndPassword(String email, String password);
 }

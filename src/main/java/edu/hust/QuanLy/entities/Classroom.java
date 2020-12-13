@@ -32,4 +32,5 @@ public class Classroom implements Serializable {
 
     @Column(name = "tuition")
     private int tuition;
+
 }

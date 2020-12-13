@@ -26,5 +26,5 @@ public class Classroom_Student implements Serializable {
     @JoinColumn(name = "id_student")
     @OneToOne
     private Student idStudent;
-
+    
 }

@@ -63,7 +63,7 @@
                   <div class="form-group">
                     <label>Select class</label>
                     <select multiple="" class="form-control">
-                      <option th:each="class : ${classes}" th:text = "${class.getName()}" th:value = "${class.id}"></option>
+                      <option th:each="classroom : ${classrooms}" th:text = "${classroom.getName()}"></option>
                     </select>
                   </div>
                 </div>
