@@ -52,7 +52,7 @@ public class Classroom implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "classroom_teacher", joinColumns = {@JoinColumn(name = "id_classroom")}
                                         , inverseJoinColumns = {@JoinColumn(name = "id_teacher")})
-    private Set<Student> teachers = new HashSet<>();
+    private Set<Teacher> teachers = new HashSet<>();
 
     public Classroom(String name, String address, String time, int maxStudent, int tuition) {
         this.name = name;

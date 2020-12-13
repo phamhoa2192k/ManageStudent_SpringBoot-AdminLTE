@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <style th:replace="/components/style/style"></style>
+</head>
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+        <!-- NAVBAR AND SIDEBAR -->
+        <div th:replace="/components/navbar"></div>
+        <div th:replace="/components/sidebar"></div>
+        <!-- END NAVBAR AND SIDEBAR -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <section class="content-header container-fluid">
+                    <h3>Home Page</h4>
+                </section>
+                <div class="content">
+                    <!------------------------ CONTENT ------------------------------------------>
+                    <div class="card">
+                        <h3>REGISTERED SUCCESSFULLY</h3>
+                    </div>
+                    <!------------------------ END CONTENT ------------------------------------>
+                </div>
+                <div class="content-footer container-fluid"></div>
+            </div>           
+        </div>
+        <footer th:replace="/components/footer"></footer>
+        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <script th:replace="components/style/script.html"></script>
+</body>
+</html>

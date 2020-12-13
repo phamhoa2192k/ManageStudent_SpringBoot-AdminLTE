@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hust.QuanLy.entities.Student;
+import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.services.CurrentUserService;
 import edu.hust.QuanLy.services.InfomationForUIService;
 
@@ -32,7 +33,7 @@ public class GetController{
     @GetMapping("/home")
     public String getHomePage(Model model){
         model.addAttribute("emailOfUser", currentUserService.getCurrentUser());
-        return "homepage";
+        return "home";
     }
 
     @GetMapping("/dashboard")
@@ -81,6 +82,7 @@ public class GetController{
 
     @GetMapping(value="/form_teacher")
     public String getTeacherForm(Model model) {
+        model.addAttribute("teacher", new Teacher());
         model.addAttribute("emailOfUser", currentUserService.getCurrentUser());
         return "form_teacher";
     }

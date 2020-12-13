@@ -36,7 +36,7 @@ public class PostController {
     @PostMapping(value="/form_student")
     public String postStudentRegister(Student student, String list) {
         registerService.registerForStudent(student, list);
-        return "homepage";
+        return "register_success";
     }
     
 }

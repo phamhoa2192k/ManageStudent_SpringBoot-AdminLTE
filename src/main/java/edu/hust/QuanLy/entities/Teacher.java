@@ -43,7 +43,7 @@ public class Teacher implements Serializable {
     @Column(name = "phonenumber")
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "teachers")
     private Set<Classroom> classrooms =  new HashSet<>();
 
     public Teacher(String firstName, String lastName, String address, Date birthday, String email, String phoneNumber) {
