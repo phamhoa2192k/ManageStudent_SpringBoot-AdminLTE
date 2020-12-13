@@ -25,7 +25,7 @@ import lombok.Setter;
 public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "firstname")
     private String firstName;

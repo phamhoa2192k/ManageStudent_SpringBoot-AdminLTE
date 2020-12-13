@@ -24,7 +24,7 @@ public class RegisterServiceImp implements RegisterService {
     public void registerForStudent(Student student, String listIdClassRegister){
         String[] listId = listIdClassRegister.split(",");
         for(String Id : listId ){
-            Classroom classroom = classroomtRepository.findById(Id).get();
+            Classroom classroom = classroomtRepository.findById(Long.parseLong(Id)).get();
             student.getClassrooms().add(classroom);
             classroom.getStudents().add(student);
         }

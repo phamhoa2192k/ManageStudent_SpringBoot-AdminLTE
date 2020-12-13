@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import edu.hust.QuanLy.entities.Teacher;
 
 @Repository
-public interface TeacherRepository extends JpaRepository<Teacher, String> {
+public interface TeacherRepository extends JpaRepository<Teacher, Long> {
     
 }

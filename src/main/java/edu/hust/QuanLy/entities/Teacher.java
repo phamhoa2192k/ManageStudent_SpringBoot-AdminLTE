@@ -22,8 +22,8 @@ import lombok.Data;
 @Table(name = "teacher")
 public class Teacher implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @Column(name = "firstname")
     private String firstName;
