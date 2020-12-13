@@ -30,6 +30,7 @@ public class QuanLyApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String...arg) throws Exception{
+		/*
 		User u1 = new User("admin1@gmail.com", "1");
 
 		List<Student> students = new ArrayList<>();
@@ -100,6 +101,7 @@ public class QuanLyApplication implements CommandLineRunner {
 		studentRepository.saveAll(students);
 		classroomRepository.saveAll(classrooms);
 		teacherRepository.saveAll(teachers);
+		*/
 	}
 
 
