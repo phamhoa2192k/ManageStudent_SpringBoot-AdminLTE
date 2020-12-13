@@ -2,21 +2,30 @@ package edu.hust.QuanLy.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "student")
 public class Student implements Serializable {
     @Id
-    @Column(name = "id", length = 10)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column(name = "firstname")
     private String firstName;
@@ -35,4 +44,22 @@ public class Student implements Serializable {
 
     @Column(name = "phonenumber")
     private String phoneNumber;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "students")
+    private Set<Classroom> classrooms =  new HashSet<>();
+
+    public Student(String firstName, String lastName, String address, Date birthday, String email, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.birthday = birthday;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Student() {
+    }
+
+    
+    
 }

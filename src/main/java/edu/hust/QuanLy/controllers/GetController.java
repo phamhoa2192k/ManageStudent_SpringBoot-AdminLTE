@@ -1,11 +1,13 @@
 package edu.hust.QuanLy.controllers;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.services.CurrentUserService;
 import edu.hust.QuanLy.services.InfomationForUIService;
 
@@ -72,6 +74,7 @@ public class GetController{
     @GetMapping(value="/form_student")
     public String getStudentForm(Model model) {
         model.addAttribute("emailOfUser", currentUserService.getCurrentUser());
+        model.addAttribute("student", new Student());
         model.addAttribute("classrooms", infomationForUIService.getAllClassrooms());
         return "form_student";
     }
