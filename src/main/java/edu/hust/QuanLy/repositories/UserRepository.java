@@ -7,5 +7,5 @@ import edu.hust.QuanLy.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    User findUserByEmailAndPassword(String username, String password);
+    User findUserByEmailAndPassword(String email, String password);
 }
