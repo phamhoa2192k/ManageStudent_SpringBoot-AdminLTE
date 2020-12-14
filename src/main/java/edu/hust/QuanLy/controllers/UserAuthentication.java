@@ -3,24 +3,30 @@ package edu.hust.QuanLy.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.hust.QuanLy.entities.Student;
-import edu.hust.QuanLy.entities.Teacher;
-import edu.hust.QuanLy.services.CurrentUserService;
+import edu.hust.QuanLy.services.InfomationForUIService;
 import edu.hust.QuanLy.services.LoginService;
-import edu.hust.QuanLy.services.RegisterService;
-
-
 
 @Controller
 @RequestMapping("/")
-public class PostController {
-    @Autowired private CurrentUserService currentUserService;
+public class UserAuthentication {
+    @Autowired private InfomationForUIService infomationForUIService;
     @Autowired private LoginService loginService;
-    @Autowired private RegisterService registerService;
+
+    @GetMapping({"/","/login"})
+    public String getloginPage(){
+        return "login";
+    }
+
+    @GetMapping("/logout")
+    public String logged(){
+        return "/logged";
+    }
+    
 
     @PostMapping("/login")
     public String postLoginForm(@RequestParam String email, @RequestParam String password, Model model) {
@@ -29,21 +35,8 @@ public class PostController {
             return  "login";
         }
         else{
-            currentUserService.setCurrentUser(email);
+            infomationForUIService.setEmailOfCurrentUser(email);
             return "redirect:/home";
         }    
     }
-
-    @PostMapping(value="/form_student")
-    public String postStudentRegisterForm(Student student, String list) {
-        registerService.registerForStudent(student, list);
-        return "register_success";
-    }
-
-    @PostMapping(value="/form_teacher")
-    public String postTeacherRegisterForm(Teacher teacher) {
-        registerService.registerForTeacher(teacher);
-        return "register_success";
-    }
-    
 }

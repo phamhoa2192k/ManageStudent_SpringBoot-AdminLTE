@@ -11,12 +11,23 @@ import edu.hust.QuanLy.services.InfomationForUIService;
 
 @Service
 public class InfomationForUIServiceImp implements InfomationForUIService {
-    @Autowired
-    private ClassroomRepository classroomRepository;
+    @Autowired private ClassroomRepository classroomRepository;
+
+    private String emailOfCurrentUser;
 
     @Override
     public List<Classroom> getAllClassrooms(){
         return classroomRepository.findAll();
+    }
+
+    @Override
+    public String getEmailOfCurrentUser(){
+        return this.emailOfCurrentUser;
+    }
+
+    @Override
+    public void setEmailOfCurrentUser(String email){
+        this.emailOfCurrentUser = email;
     }
 }
     

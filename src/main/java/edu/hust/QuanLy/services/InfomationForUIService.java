@@ -9,4 +9,6 @@ import edu.hust.QuanLy.entities.Classroom;
 @Service
 public interface InfomationForUIService {
     List<Classroom> getAllClassrooms();
+    String getEmailOfCurrentUser();
+    void setEmailOfCurrentUser(String email);
 }
