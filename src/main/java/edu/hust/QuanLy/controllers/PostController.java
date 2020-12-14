@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.hust.QuanLy.entities.Student;
+import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.services.CurrentUserService;
 import edu.hust.QuanLy.services.LoginService;
 import edu.hust.QuanLy.services.RegisterService;
@@ -34,8 +35,14 @@ public class PostController {
     }
 
     @PostMapping(value="/form_student")
-    public String postStudentRegister(Student student, String list) {
+    public String postStudentRegisterForm(Student student, String list) {
         registerService.registerForStudent(student, list);
+        return "register_success";
+    }
+
+    @PostMapping(value="/form_teacher")
+    public String postTeacherRegisterForm(Teacher teacher) {
+        registerService.registerForTeacher(teacher);
         return "register_success";
     }
     

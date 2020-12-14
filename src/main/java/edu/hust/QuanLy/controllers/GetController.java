@@ -72,7 +72,7 @@ public class GetController{
         return "contact";
     }
 
-    @GetMapping(value="/form_student")
+    @GetMapping(value="/form/student")
     public String getStudentForm(Model model) {
         model.addAttribute("emailOfUser", currentUserService.getCurrentUser());
         model.addAttribute("student", new Student());
