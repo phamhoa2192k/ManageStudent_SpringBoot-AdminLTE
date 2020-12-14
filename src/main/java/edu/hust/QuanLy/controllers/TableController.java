@@ -25,7 +25,7 @@ public class TableController {
     public String getTeacherTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
         model.addAttribute("listStudents", infomationForUIService.getAllStudents());
-        return "table_student";
+        return "table_teacher";
     }
 
     @GetMapping(value="/classroom")

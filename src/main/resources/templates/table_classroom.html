@@ -70,6 +70,10 @@
         $(document).ready(function () {
             $('#classroomTable').DataTable();
         });
+        $("a[name^='table']").addClass("active");
+        $("li[name^='table']").addClass("menu-open");
+        $("a[name^='table_teacher']").removeClass("active");
+        $("a[name^='table_student']").removeClass("active");
     </script>
 </body>
 

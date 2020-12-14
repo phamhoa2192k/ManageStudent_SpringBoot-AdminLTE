@@ -72,6 +72,10 @@
         $(document).ready(function () {
             $('#studentTable').DataTable();
         });
+        $("a[name^='table']").addClass("active");
+        $("li[name^='table']").addClass("menu-open");
+        $("a[name^='table_teacher']").removeClass("active");
+        $("a[name^='table_classroom']").removeClass("active");
     </script>
 </body>
 
