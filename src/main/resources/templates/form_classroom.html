@@ -2,6 +2,7 @@
 <html xmlns="https://www.thymeleaf.org">
 
 <head>
+  <meta charset="UTF-8" />
   <title>Form</title>
   <style th:replace="/components/style/style"></style>
 </head>
@@ -15,47 +16,58 @@
     <div class="content-wrapper">
       <div class="container-fluid">
         <section class="content-header container-fluid">
-          <h3>Teacher Register</h3>
+          <h3>Classroom</h3>
         </section>
         <div class="content">
           <!------------------------ CONTENT ------------------------------------------>
           <div>
             <!-- general form elements -->
-            <div class="card card-primary">
+            <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Teacher Register</h3>
+                <h3 class="card-title">Create new class</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="/form/teacher" method="POST">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="form-group col-lg-6">
-                      <label for="firstName">First name</label>
-                      <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
-                    </div>
-                    <div class="form-group col-lg-6">
-                      <label for="lastName">Last name</label>
-                      <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
-                    </div>
+              <form role="form" action="/form/classroom" method="POST" th:object="${classroom}" th:field="${list}">
+                <div class="card-body" th:object="${classroom}">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}"
+                      required>
                   </div>
                   <div class="form-group">
-                    <label for="birthday">Birthday</label>
-                    <input type="date" class="form-control" id="birthday" placeholder="Birthday">
+                    <label for="time">Time</label>
+                    <input type="text" class="form-control" id="time" placeholder="Time" th:field="*{time}"
+                      required>
                   </div>
                   <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <label for="maxStudents">Max students</label>
+                    <input type="email" class="form-control" id="maxStudents" placeholder="Max students" th:field="*{maxStudent}"
+                      required>
                   </div>
                   <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="Address">
+                    <input type="text" class="form-control" id="address" placeholder="Address" th:field="*{address}"
+                      required>
                   </div>
-                  
+
                   <div class="form-group">
-                    <label for="phone">Phone number</label>
-                    <input type="text" class="form-control" id="phone" placeholder="Phone number">
-                  </div>        
+                    <label for="tuition">Tuition</label>
+                    <input type="number" class="form-control" id="tuition" placeholder="Tuition" th:field="*{tuition}"
+                      required>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <!-- Select multiple-->
+                  <div class="form-group">
+                    <label>Select teacher</label>
+                    <select class="form-control selectpicker" name="list" multiple>
+                      <option th:each="teacher : ${teachers}"
+                        th:text = "${teacher.getFirstName() + ' ' + teacher.getLastName() }" th:value="${teacher.getId()}">
+                      </option>
+                    </select>
+                  </div>
                 </div>
                 <!-- /.card-body -->
 
@@ -80,10 +92,10 @@
   </div>
   <script th:replace="components/style/script.html"></script>
   <script>
-    $("a[name^='form']").addClass("active menu-open");
+    $("a[name^='form']").addClass("active");
     $("li[name^='form']").addClass("menu-open");
+    $("a[name^='form_teacher']").removeClass("active");
     $("a[name^='form_student']").removeClass("active");
-    $("a[name^='form_classroom']").removeClass("active");
   </script>
 </body>
 

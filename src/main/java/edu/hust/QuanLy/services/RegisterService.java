@@ -2,6 +2,7 @@ package edu.hust.QuanLy.services;
 
 import org.springframework.stereotype.Service;
 
+import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
 /**
@@ -22,4 +23,5 @@ public interface RegisterService {
      * @param teacher : Lớp Teacher
      */
     public void registerForTeacher(Teacher teacher);
+    public void registerForClassroom(Classroom classroom, String listIdTeacher);
 }

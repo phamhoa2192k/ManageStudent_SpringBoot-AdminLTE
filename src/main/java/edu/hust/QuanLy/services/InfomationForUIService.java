@@ -5,10 +5,15 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import edu.hust.QuanLy.entities.Classroom;
+import edu.hust.QuanLy.entities.Student;
+import edu.hust.QuanLy.entities.Teacher;
 
 @Service
 public interface InfomationForUIService {
+    void setEmailOfCurrentUser(String email);
     List<Classroom> getAllClassrooms();
     String getEmailOfCurrentUser();
-    void setEmailOfCurrentUser(String email);
+    List<Teacher> getAllTeachers();
+    List<Student> getAllStudents();
+    
 }

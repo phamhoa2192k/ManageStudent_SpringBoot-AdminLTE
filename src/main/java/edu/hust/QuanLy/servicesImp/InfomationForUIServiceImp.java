@@ -6,12 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hust.QuanLy.entities.Classroom;
+import edu.hust.QuanLy.entities.Student;
+import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.repositories.ClassroomRepository;
+import edu.hust.QuanLy.repositories.StudentRepository;
+import edu.hust.QuanLy.repositories.TeacherRepository;
 import edu.hust.QuanLy.services.InfomationForUIService;
 
 @Service
 public class InfomationForUIServiceImp implements InfomationForUIService {
     @Autowired private ClassroomRepository classroomRepository;
+    @Autowired private StudentRepository studentRepository;
+    @Autowired private TeacherRepository teacherRepository;
 
     private String emailOfCurrentUser;
 
@@ -28,6 +34,16 @@ public class InfomationForUIServiceImp implements InfomationForUIService {
     @Override
     public void setEmailOfCurrentUser(String email){
         this.emailOfCurrentUser = email;
+    }
+
+    @Override
+    public List<Teacher> getAllTeachers(){
+        return teacherRepository.findAll();
+    }
+
+    @Override
+    public List<Student> getAllStudents(){
+        return studentRepository.findAll();
     }
 }
     

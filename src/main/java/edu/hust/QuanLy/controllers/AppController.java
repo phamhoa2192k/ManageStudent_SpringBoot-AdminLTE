@@ -51,4 +51,5 @@ public class AppController {
         model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
         return "contact";
     }
+
 }

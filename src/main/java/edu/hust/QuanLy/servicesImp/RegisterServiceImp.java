@@ -35,4 +35,15 @@ public class RegisterServiceImp implements RegisterService {
     public void registerForTeacher(Teacher teacher){
         teacherRepository.save(teacher);
     }
+
+    @Override
+    public void registerForClassroom(Classroom classroom, String listIdTeacher){
+        String[] listId = listIdTeacher.split(",");
+        for(String Id : listId ){
+            Teacher teacher = teacherRepository.findById(Long.parseLong(Id)).get();
+            classroom.getTeachers().add(teacher);
+            teacher.getClassrooms().add(classroom);
+        }
+        classroomtRepository.save(classroom);
+    }
 }

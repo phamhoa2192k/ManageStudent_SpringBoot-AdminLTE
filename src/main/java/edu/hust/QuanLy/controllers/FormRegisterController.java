@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.services.InfomationForUIService;
@@ -42,6 +43,20 @@ public class FormRegisterController {
     @PostMapping(value="/teacher")
     public String postTeacherRegisterForm(Teacher teacher) {
         registerService.registerForTeacher(teacher);
+        return "register_success";
+    }
+
+    @GetMapping(value = "/classroom")
+    public String getClassroomForm(Model model){
+        model.addAttribute("classroom", new Classroom());
+        model.addAttribute("teachers", infomationForUIService.getAllTeachers());
+        model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
+        return "form_classroom";
+    }
+
+    @PostMapping(value="/classroom")
+    public String postClassroomRegisterForm(Classroom classroom, String list) {
+        registerService.registerForClassroom(classroom, list);
         return "register_success";
     }
 
