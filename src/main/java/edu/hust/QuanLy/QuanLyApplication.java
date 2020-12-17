@@ -32,6 +32,11 @@ public class QuanLyApplication implements CommandLineRunner {
 		SpringApplication.run(QuanLyApplication.class, args);
 	}
 
+	// DATASEED
+	/**
+	 * Chạy ở lần đầu biên dịch.
+	 * Những lần chạy sau thì nên xóa bỏ.
+	 */
 	@Override
 	public void run(String...arg) throws Exception{
 		/*

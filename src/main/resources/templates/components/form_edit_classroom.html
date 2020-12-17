@@ -1,0 +1,67 @@
+<div class="modal fade" th:id="'editClassroom' + *{classroom.getId()} ">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div class="card card-danger">
+                    <!-- form start -->
+                    <form role="form" action="/table/classroom/edit" method="POST">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label th:attr=" for = 'id' + *{classroom.getId()}">ID</label>
+                                <input type="text" class="form-control" id="name" th:value="*{classroom.getId()}"
+                                    name="id" th:id="'id'+ *{classroom.getId}" readonly>
+                            </div>
+                            <div class="form-group" th:attr=" for = 'name' + *{classroom.getId()}">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Enter name"
+                                    th:id="'name'+ *{classroom.getId}" th:value="*{classroom.getName()}" name="name"
+                                    required>
+                            </div>
+                            <div class="form-group" th:attr=" for = 'time' + *{classroom.getId()}">
+                                <label for="time">Time</label>
+                                <input type="text" class="form-control" id="time" placeholder="Time"
+                                    th:value="*{classroom.getTime()}" th:id="'time'+ *{classroom.getId}" name="time"
+                                    required>
+                            </div>
+                            <div class="form-group" th:attr=" for = 'maxStudent' + *{classroom.getId()}">
+                                <label for="maxStudents">Max students</label>
+                                <input type="number" class="form-control" id="maxStudents" placeholder="Max students"
+                                    name="maxStudent" th:id="'maxStudent'+ *{classroom.getId}"
+                                    th:value="*{classroom.getMaxStudent()}" required>
+                            </div>
+                            <div class="form-group" th:attr=" for = 'address' + *{classroom.getId()}">
+                                <label for="address">Address</label>
+                                <input type="text" class="form-control" id="address" placeholder="Address"
+                                    name="address" th:id="'address'+ *{classroom.getId}"
+                                    th:value="*{classroom.getAddress()}" required>
+                            </div>
+
+                            <div class="form-group" th:attr=" for = 'tuition' + *{classroom.getId()}">
+                                <label for="tuition">Tuition</label>
+                                <input type="number" class="form-control" id="tuition" placeholder="Tuition"
+                                    name="tuition" th:id="'tuition'+ *{classroom.getId}"
+                                    th:value="*{classroom.getTuition()}" required>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

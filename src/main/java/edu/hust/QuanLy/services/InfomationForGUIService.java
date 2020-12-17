@@ -8,11 +8,15 @@ import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
 
+/**
+ * Interface cung cấp các phương thức tìm kiếm thông tin phục vụ cho giao diện phía người dùng
+ */
 @Service
 public interface InfomationForGUIService {
     void setEmailOfCurrentUser(String email);
-    List<Classroom> getAllClassrooms();
     String getEmailOfCurrentUser();
+
+    List<Classroom> getAllClassrooms();
     List<Teacher> getAllTeachers();
     List<Student> getAllStudents();
     

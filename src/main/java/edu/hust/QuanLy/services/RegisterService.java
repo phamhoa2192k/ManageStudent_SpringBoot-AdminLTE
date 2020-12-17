@@ -6,7 +6,7 @@ import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
 /**
- * Là interface cung cấp dịch vụ lưu thông tin đăng kí của sinh viên và giảng viên
+ * Là interface cung cấp dịch vụ lưu thông tin đăng kí của sinh viên, giảng viên, lớp học
  * xuống database
  */
 @Service
@@ -23,5 +23,11 @@ public interface RegisterService {
      * @param teacher : Lớp Teacher
      */
     public void registerForTeacher(Teacher teacher);
+
+    /**
+     * Phương thức lưu thông tin tạo mới lớp học xuống database
+     * @param classroom
+     * @param listIdTeacher : String chứa thông tin các giảng viên dạy lớp, cách nhau bởi dấu ','
+     */
     public void registerForClassroom(Classroom classroom, String listIdTeacher);
 }

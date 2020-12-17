@@ -36,6 +36,7 @@
                                         <th>Time</th>
                                         <th>Max students</th>
                                         <th>Tuition</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,6 +47,19 @@
                                         <td th:text="*{classroom.getTime()}"></td>
                                         <td th:text="*{classroom.getMaxStudent()}"></td>
                                         <td th:text="*{classroom.getTuition()}"></td>
+                                        <td>
+                                            <div class="row">
+                                                <button class='btn btn-success col-sm-6'
+                                                    data-toggle="modal"
+                                                    th:attr="data-target = '#editClassroom' + *{classroom.getId()}">Edit</button>
+
+                                                <button class='btn btn-danger col-sm-6'
+                                                    data-toggle="modal"
+                                                    th:attr="data-target = '#deleteClassroom' + *{classroom.getId()}">Delete</button>
+                                            </div>
+                                            <div th:replace="/components/form_edit_classroom"></div>
+                                            <div th:replace="/components/form_delete_classroom"></div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

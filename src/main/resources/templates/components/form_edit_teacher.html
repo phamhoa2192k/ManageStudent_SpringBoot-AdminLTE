@@ -1,0 +1,72 @@
+<div class="modal fade" th:id="'editTeacher' + *{teacher.getId()} ">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- general form elements -->
+                <div class="card card-danger">
+                    <!-- form start -->
+                    <form role="form" action="/table/teacher/edit" method="POST">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label th:attr="for = 'id' + *{teacher.getId()}">ID</label>
+                                <input type="text" class="form-control" th:id="id + *{teacher.getId()}"
+                                    th:value="*{teacher.getId}" name="id" readonly="readonly">
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label th:attr="for = 'firstName' + *{teacher.getId()}">First name</label>
+                                    <input type="text" class="form-control" th:id="firstName + *{teacher.getId()}"
+                                        placeholder="Enter first name" th:value="*{teacher.getFirstName}"
+                                        name="firstName" required>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label th:attr="for = 'lastName' + *{teacher.getId()}">Last name</label>
+                                    <input type="text" class="form-control" th:id="lastName + *{teacher.getId()}"
+                                        placeholder="Enter last name" th:value="*{teacher.getLastName}" name="lastName"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label th:attr="for = 'birthday' + *{teacher.getId()}">Birthday</label>
+                                <input type="date" class="form-control" th:id="birthday + *{teacher.getId()}"
+                                    placeholder="Birthday" th:value="*{teacher.getBirthday}" name="birthday" required>
+                            </div>
+                            <div class="form-group">
+                                <label th:attr="for = 'email' + *{teacher.getId()}">Email</label>
+                                <input type="email" class="form-control" th:id="email + *{teacher.getId()}"
+                                    placeholder="Email" th:value="*{teacher.getEmail}" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label th:attr="for = 'address' + *{teacher.getId()}">Address</label>
+                                <input type="text" class="form-control" th:id="address + *{teacher.getId()}"
+                                    placeholder="Address" th:value="*{teacher.getAddress}" name="address" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label th:attr="for = 'phone' + *{teacher.getId()}">Phone number</label>
+                                <input type="text" class="form-control" th:id="phone + *{teacher.getId()}"
+                                    placeholder="Phone number" th:value="*{teacher.getPhoneNumber}" name="phoneNumber"
+                                    required>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                                <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.card -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>

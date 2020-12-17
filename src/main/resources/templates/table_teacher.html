@@ -37,6 +37,7 @@
                                         <th>Address</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,6 +49,19 @@
                                         <td th:text="*{teacher.getAddress()}"></td>
                                         <td th:text="*{teacher.getEmail()}"></td>
                                         <td th:text="*{teacher.getPhoneNumber()}"></td>
+                                        <td>
+                                            <div class="row">
+                                                <button class='btn btn-success col-sm-6'
+                                                    data-toggle="modal"
+                                                    th:attr="data-target = '#editTeacher' + *{teacher.getId()}">Edit</button>
+
+                                                <button class='btn btn-danger col-sm-6'
+                                                    data-toggle="modal"
+                                                    th:attr="data-target = '#deleteTeacher' + *{teacher.getId()}">Delete</button>
+                                            </div>
+                                            <div th:replace="/components/form_edit_teacher"></div>
+                                            <div th:replace="/components/form_delete_teacher"></div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -73,7 +87,6 @@
             $('#teacherTable').DataTable();
         });
         $("a[name^='table']").addClass("active");
-
         $("a[name^='table_classroom']").removeClass("active");
         $("a[name^='table_student']").removeClass("active");
     </script>

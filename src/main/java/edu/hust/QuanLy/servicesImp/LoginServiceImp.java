@@ -9,8 +9,7 @@ import edu.hust.QuanLy.services.LoginService;
 
 @Service
 public class LoginServiceImp implements LoginService{
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired private UserRepository userRepository;
 
     @Override
     public Boolean checkLoginForm(String email, String password){

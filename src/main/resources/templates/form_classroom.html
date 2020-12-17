@@ -62,7 +62,7 @@
                   <!-- Select multiple-->
                   <div class="form-group">
                     <label>Select teacher</label>
-                    <select class="form-control selectpicker" name="list" multiple>
+                    <select class="form-control selectpicker" name="list" required multiple>
                       <option th:each="teacher : ${teachers}"
                         th:text = "${teacher.getFirstName() + ' ' + teacher.getLastName() }" th:value="${teacher.getId()}">
                       </option>

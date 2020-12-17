@@ -14,56 +14,72 @@ import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.services.EditService;
 import edu.hust.QuanLy.services.InfomationForGUIService;
 
-
 @Controller
 @RequestMapping("/table")
 public class TableController {
-    @Autowired private InfomationForGUIService infomationForGUIService;
-    @Autowired private EditService editService;
+    @Autowired
+    private InfomationForGUIService infomationForGUIService;
+    @Autowired
+    private EditService editService;
 
-    @GetMapping(value="/student")
+    // STUDENT
+    @GetMapping(value = "/student")
     public String getStudentTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("listStudents", infomationForGUIService.getAllStudents());
         return "table_student";
     }
 
-    @GetMapping(value="/teacher")
+    @PostMapping(value = "/student/edit")
+    public String postEditFormStudent(Student student, Model model) {
+        editService.editStudent(student);
+        return "redirect:/table/student";
+    }
+
+    @PostMapping(value = "/student/delete")
+    public String postDeleteFormStudent(@RequestParam long id) {
+        editService.deleteStudent(id);
+        return "redirect:/table/student";
+    }
+
+    // TEACHER
+    @GetMapping(value = "/teacher")
     public String getTeacherTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("listTeacher", infomationForGUIService.getAllTeachers());
         return "table_teacher";
     }
 
-    @GetMapping(value="/classroom")
+    @PostMapping(value = "/teacher/edit")
+    public String postEditFormTeacher(Teacher teacher, Model model) {
+        editService.editTeacher(teacher);
+        return "redirect:/table/teacher";
+    }
+    
+    @PostMapping(value = "/teacher/delete")
+    public String postDeleteFormTeacher(@RequestParam long id) {
+        editService.deleteTeacher(id);
+        return "redirect:/table/teacher";
+    }
+
+    // CLASSROOM
+    @GetMapping(value = "/classroom")
     public String getClassroomTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("listClassrooms", infomationForGUIService.getAllClassrooms());
         return "table_classroom";
     }
 
-    @PostMapping(value = "/student/edit")
-    public String postEditFormStudent(Student student, Model model){
-        editService.editStudent(student);
-        return "redirect:/table/student";
-    }
-
-    @PostMapping(value = "/student/delete")
-    public String postEditFormStudent(@RequestParam long id){
-        editService.deleteStudent(id);
-        return "redirect:/table/student";
-    }
-
-    @PostMapping(value = "/teacher/edit")
-    public String postEditFormTeacher(Teacher teacher, Model model){
-        editService.editTeacher(teacher);
-        return "redirect:/table/teacher";
-    }
-
     @PostMapping(value = "/classroom/edit")
-    public String postEditFormClassroom(Classroom classroom, Model model){
+    public String postEditFormClassroom(Classroom classroom, Model model) {
         editService.editClassroom(classroom);
         return "redirect:/table/classroom";
     }
-    
+
+    @PostMapping(value = "/classroom/delete")
+    public String postDeleteFormClassroom(@RequestParam long id) {
+        editService.deleteClassroom(id);
+        return "redirect:/table/classroom";
+    }
+
 }

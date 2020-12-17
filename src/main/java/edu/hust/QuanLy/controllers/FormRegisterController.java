@@ -16,10 +16,13 @@ import edu.hust.QuanLy.services.RegisterService;
 @Controller
 @RequestMapping("/form")
 public class FormRegisterController {
-    @Autowired private InfomationForGUIService infomationForGUIService;
-    @Autowired private RegisterService registerService;
+    @Autowired
+    private InfomationForGUIService infomationForGUIService;
+    @Autowired
+    private RegisterService registerService;
 
-    @GetMapping(value="/student")
+    // STUDENT
+    @GetMapping(value = "/student")
     public String getStudentForm(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("student", new Student());
@@ -27,38 +30,39 @@ public class FormRegisterController {
         return "form_student";
     }
 
-    @GetMapping(value="/teacher")
+    @PostMapping(value = "/student")
+    public String postStudentRegisterForm(Student student, String list) {
+        registerService.registerForStudent(student, list);
+        return "register_success";
+    }
+
+    // TEACHER
+    @GetMapping(value = "/teacher")
     public String getTeacherForm(Model model) {
         model.addAttribute("teacher", new Teacher());
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         return "form_teacher";
     }
 
-    @PostMapping(value="/student")
-    public String postStudentRegisterForm(Student student, String list) {
-        registerService.registerForStudent(student, list);
-        return "register_success";
-    }
-
-    @PostMapping(value="/teacher")
+    @PostMapping(value = "/teacher")
     public String postTeacherRegisterForm(Teacher teacher) {
         registerService.registerForTeacher(teacher);
         return "register_success";
     }
 
+    // CLASSROOM
     @GetMapping(value = "/classroom")
-    public String getClassroomForm(Model model){
+    public String getClassroomForm(Model model) {
         model.addAttribute("classroom", new Classroom());
         model.addAttribute("teachers", infomationForGUIService.getAllTeachers());
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         return "form_classroom";
     }
 
-    @PostMapping(value="/classroom")
+    @PostMapping(value = "/classroom")
     public String postClassroomRegisterForm(Classroom classroom, String list) {
         registerService.registerForClassroom(classroom, list);
         return "register_success";
     }
-
 
 }
