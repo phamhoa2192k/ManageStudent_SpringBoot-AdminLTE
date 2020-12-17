@@ -11,10 +11,10 @@ import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.repositories.ClassroomRepository;
 import edu.hust.QuanLy.repositories.StudentRepository;
 import edu.hust.QuanLy.repositories.TeacherRepository;
-import edu.hust.QuanLy.services.InfomationForUIService;
+import edu.hust.QuanLy.services.InfomationForGUIService;
 
 @Service
-public class InfomationForUIServiceImp implements InfomationForUIService {
+public class InfomationForGUIServiceImp implements InfomationForGUIService {
     @Autowired private ClassroomRepository classroomRepository;
     @Autowired private StudentRepository studentRepository;
     @Autowired private TeacherRepository teacherRepository;

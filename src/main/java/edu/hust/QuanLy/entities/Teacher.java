@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.entities;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,15 +11,19 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.ForeignKey;
+import javax.persistence.ConstraintMode;
+import javax.persistence.JoinColumn;
 
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "teacher")
-public class Teacher implements Serializable {
+public class Teacher  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -43,7 +46,17 @@ public class Teacher implements Serializable {
     @Column(name = "phonenumber")
     private String phoneNumber;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL , mappedBy = "teachers")
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade ={CascadeType.MERGE,
+                    CascadeType.PERSIST,
+                    CascadeType.REFRESH,
+                    CascadeType.DETACH})
+    @JoinTable( name = "classroom_teacher",
+                inverseJoinColumns = { @JoinColumn(name = "id_classroom") },
+                joinColumns = { @JoinColumn(name = "id_teacher")},
+                foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+                inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+            )
     private Set<Classroom> classrooms =  new HashSet<>();
 
     public Teacher(String firstName, String lastName, String address, Date birthday, String email, String phoneNumber) {

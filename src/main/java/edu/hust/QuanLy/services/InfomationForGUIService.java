@@ -9,7 +9,7 @@ import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
 
 @Service
-public interface InfomationForUIService {
+public interface InfomationForGUIService {
     void setEmailOfCurrentUser(String email);
     List<Classroom> getAllClassrooms();
     String getEmailOfCurrentUser();

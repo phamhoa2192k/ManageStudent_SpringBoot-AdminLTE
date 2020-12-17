@@ -17,16 +17,15 @@ import edu.hust.QuanLy.services.RegisterService;
 @Service
 public class RegisterServiceImp implements RegisterService {
     @Autowired private StudentRepository studentRepository;
-    @Autowired private ClassroomRepository classroomtRepository;
+    @Autowired private ClassroomRepository classroomRepository;
     @Autowired private TeacherRepository teacherRepository;
 
     @Override
     public void registerForStudent(Student student, String listIdClassRegister){
         String[] listId = listIdClassRegister.split(",");
         for(String Id : listId ){
-            Classroom classroom = classroomtRepository.findById(Long.parseLong(Id)).get();
+            Classroom classroom = classroomRepository.findById(Long.parseLong(Id)).get();
             student.getClassrooms().add(classroom);
-            classroom.getStudents().add(student);
         }
         studentRepository.save(student);
     }
@@ -42,8 +41,7 @@ public class RegisterServiceImp implements RegisterService {
         for(String Id : listId ){
             Teacher teacher = teacherRepository.findById(Long.parseLong(Id)).get();
             classroom.getTeachers().add(teacher);
-            teacher.getClassrooms().add(classroom);
         }
-        classroomtRepository.save(classroom);
+        classroomRepository.save(classroom);
     }
 }

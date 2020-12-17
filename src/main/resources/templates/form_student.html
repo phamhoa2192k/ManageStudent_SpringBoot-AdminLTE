@@ -65,7 +65,7 @@
                   <!-- Select multiple-->
                   <div class="form-group">
                     <label>Select class</label>
-                    <select class="form-control selectpicker" name = "list" multiple>
+                    <select class="form-control selectpicker" name = "list" multiple required>
                       <option th:each="classroom : ${classrooms}" th:text = "${classroom.getName()}" th:value = "${classroom.getId()}"></option>
                     </select>
                   </div>    
@@ -94,7 +94,6 @@
   <script th:replace="components/style/script.html"></script>
   <script>
     $("a[name^='form']").addClass("active");
-    $("li[name^='form']").addClass("menu-open");
     $("a[name^='form_teacher']").removeClass("active");
     $("a[name^='form_classroom']").removeClass("active");
   </script>

@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
-import edu.hust.QuanLy.services.InfomationForUIService;
+import edu.hust.QuanLy.services.InfomationForGUIService;
 import edu.hust.QuanLy.services.RegisterService;
 
 @Controller
 @RequestMapping("/form")
 public class FormRegisterController {
-    @Autowired private InfomationForUIService infomationForUIService;
+    @Autowired private InfomationForGUIService infomationForGUIService;
     @Autowired private RegisterService registerService;
 
     @GetMapping(value="/student")
     public String getStudentForm(Model model) {
-        model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
+        model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("student", new Student());
-        model.addAttribute("classrooms", infomationForUIService.getAllClassrooms());
+        model.addAttribute("classrooms", infomationForGUIService.getAllClassrooms());
         return "form_student";
     }
 
     @GetMapping(value="/teacher")
     public String getTeacherForm(Model model) {
         model.addAttribute("teacher", new Teacher());
-        model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
+        model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         return "form_teacher";
     }
 
@@ -49,8 +49,8 @@ public class FormRegisterController {
     @GetMapping(value = "/classroom")
     public String getClassroomForm(Model model){
         model.addAttribute("classroom", new Classroom());
-        model.addAttribute("teachers", infomationForUIService.getAllTeachers());
-        model.addAttribute("emailOfUser", infomationForUIService.getEmailOfCurrentUser());
+        model.addAttribute("teachers", infomationForGUIService.getAllTeachers());
+        model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         return "form_classroom";
     }
 

@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.hust.QuanLy.services.InfomationForUIService;
+import edu.hust.QuanLy.services.InfomationForGUIService;
 import edu.hust.QuanLy.services.LoginService;
 
 @Controller
 @RequestMapping("/")
 public class UserAuthentication {
-    @Autowired private InfomationForUIService infomationForUIService;
+    @Autowired private InfomationForGUIService infomationForGUIService;
     @Autowired private LoginService loginService;
 
     @GetMapping({"/","/login"})
@@ -35,7 +35,7 @@ public class UserAuthentication {
             return  "login";
         }
         else{
-            infomationForUIService.setEmailOfCurrentUser(email);
+            infomationForGUIService.setEmailOfCurrentUser(email);
             return "redirect:/home";
         }    
     }

@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.entities;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,13 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ForeignKey;
+import javax.persistence.ConstraintMode;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "classroom")
-public class Classroom implements Serializable {
+public class Classroom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -44,15 +44,37 @@ public class Classroom implements Serializable {
     @Column(name = "tuition")
     private int tuition;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "classroom_student", joinColumns = {@JoinColumn(name = "id_classroom")}
-                                        , inverseJoinColumns = {@JoinColumn(name = "id_student")})
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = { CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH,
+                            CascadeType.DETACH 
+                        })
+    @JoinTable( name = "classroom_student",
+                joinColumns = { @JoinColumn(name = "id_classroom") },
+                inverseJoinColumns = { @JoinColumn(name = "id_student"),},
+                foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+                inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+        )
     private Set<Student> students = new HashSet<>();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "classroom_teacher", joinColumns = {@JoinColumn(name = "id_classroom")}
-                                        , inverseJoinColumns = {@JoinColumn(name = "id_teacher")})
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+                cascade = { CascadeType.MERGE,
+                            CascadeType.PERSIST,
+                            CascadeType.REFRESH,
+                            CascadeType.DETACH
+                        })
+    @JoinTable( name = "classroom_teacher",
+                joinColumns = { @JoinColumn(name = "id_classroom") },
+                inverseJoinColumns = { @JoinColumn(name = "id_teacher")},
+                foreignKey = @ForeignKey(ConstraintMode.CONSTRAINT),
+                inverseForeignKey = @ForeignKey(ConstraintMode.CONSTRAINT)
+            )
     private Set<Teacher> teachers = new HashSet<>();
+
+
 
     public Classroom(String name, String address, String time, int maxStudent, int tuition) {
         this.name = name;
@@ -65,5 +87,4 @@ public class Classroom implements Serializable {
     public Classroom() {
     }
 
-    
 }

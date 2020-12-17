@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.entities;
 
-import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +13,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "user")
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

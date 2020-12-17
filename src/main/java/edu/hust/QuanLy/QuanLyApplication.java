@@ -1,18 +1,22 @@
 package edu.hust.QuanLy;
 
+/*
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.hust.QuanLy.entities.Classroom;
+import edu.hust.QuanLy.entities.Student;
+import edu.hust.QuanLy.entities.Teacher;
+import edu.hust.QuanLy.entities.User;
+*/
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import edu.hust.QuanLy.entities.Classroom;
-import edu.hust.QuanLy.entities.Student;
-import edu.hust.QuanLy.entities.Teacher;
-import edu.hust.QuanLy.entities.User;
+
 import edu.hust.QuanLy.repositories.ClassroomRepository;
 import edu.hust.QuanLy.repositories.StudentRepository;
 import edu.hust.QuanLy.repositories.TeacherRepository;
