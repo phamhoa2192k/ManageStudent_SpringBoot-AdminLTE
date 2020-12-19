@@ -71,6 +71,15 @@ public class Teacher  {
     public Teacher() {
     }
 
+    public String getClassroomsString(){
+        String s = "";
+        for(Classroom c : this.getClassrooms()){
+            s += c.getName() +", ";
+        }
+
+        return s;
+    }
+
     
 }
 

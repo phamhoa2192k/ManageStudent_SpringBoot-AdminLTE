@@ -13,12 +13,12 @@ import edu.hust.QuanLy.entities.Teacher;
 @Service
 public interface EditService {
     // STUDENT
-    void editStudent(Student student);
+    void editStudent(Student student, String listIdClassrooms);
 
     void deleteStudent(long id);
 
     // TEACHER
-    void editTeacher(Teacher teacher);
+    void editTeacher(Teacher teacher, String listIdClassrooms);
 
     void deleteTeacher(long id);
 

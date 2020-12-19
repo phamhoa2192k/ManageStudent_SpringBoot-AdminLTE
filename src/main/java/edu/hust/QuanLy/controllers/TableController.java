@@ -27,12 +27,13 @@ public class TableController {
     public String getStudentTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("listStudents", infomationForGUIService.getAllStudents());
+        model.addAttribute("classrooms", infomationForGUIService.getAllClassrooms());
         return "table_student";
     }
 
     @PostMapping(value = "/student/edit")
-    public String postEditFormStudent(Student student, Model model) {
-        editService.editStudent(student);
+    public String postEditFormStudent(Student student,String list, Model model) {
+        editService.editStudent(student, list);
         return "redirect:/table/student";
     }
 
@@ -47,12 +48,13 @@ public class TableController {
     public String getTeacherTablePage(Model model) {
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
         model.addAttribute("listTeacher", infomationForGUIService.getAllTeachers());
+        model.addAttribute("classrooms", infomationForGUIService.getAllClassrooms());
         return "table_teacher";
     }
 
     @PostMapping(value = "/teacher/edit")
-    public String postEditFormTeacher(Teacher teacher, Model model) {
-        editService.editTeacher(teacher);
+    public String postEditFormTeacher(Teacher teacher,String list, Model model) {
+        editService.editTeacher(teacher, list);
         return "redirect:/table/teacher";
     }
     

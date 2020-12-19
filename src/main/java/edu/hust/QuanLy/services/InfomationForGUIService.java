@@ -15,7 +15,7 @@ import edu.hust.QuanLy.entities.Teacher;
 public interface InfomationForGUIService {
     void setEmailOfCurrentUser(String email);
     String getEmailOfCurrentUser();
-
+    String getBounceRate();
     List<Classroom> getAllClassrooms();
     List<Teacher> getAllTeachers();
     List<Student> getAllStudents();

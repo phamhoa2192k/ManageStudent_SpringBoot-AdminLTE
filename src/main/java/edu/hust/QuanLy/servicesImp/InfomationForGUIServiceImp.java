@@ -1,6 +1,7 @@
 package edu.hust.QuanLy.servicesImp;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,12 @@ public class InfomationForGUIServiceImp implements InfomationForGUIService {
     @Override
     public String getEmailOfCurrentUser(){
         return this.emailOfCurrentUser;
+    }
+
+    @Override
+    public String getBounceRate(){
+        Random r = new Random();
+        return "" +  (r.nextFloat() * 100);
     }
 
     @Override

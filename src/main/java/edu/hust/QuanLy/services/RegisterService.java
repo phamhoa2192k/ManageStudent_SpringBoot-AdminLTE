@@ -22,12 +22,12 @@ public interface RegisterService {
      * Phương thức lưu thông tin của giảng viên đăng ký xuống database
      * @param teacher : Lớp Teacher
      */
-    public void registerForTeacher(Teacher teacher);
+    public void registerForTeacher(Teacher teacher, String listIdClassRegister);
 
     /**
      * Phương thức lưu thông tin tạo mới lớp học xuống database
      * @param classroom
      * @param listIdTeacher : String chứa thông tin các giảng viên dạy lớp, cách nhau bởi dấu ','
      */
-    public void registerForClassroom(Classroom classroom, String listIdTeacher);
+    public void registerForClassroom(Classroom classroom);
 }

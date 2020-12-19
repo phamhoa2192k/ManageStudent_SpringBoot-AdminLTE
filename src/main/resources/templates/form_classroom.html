@@ -28,7 +28,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="/form/classroom" method="POST" th:object="${classroom}" th:field="${list}">
+              <form role="form" action="/form/classroom" method="POST">
                 <div class="card-body" th:object="${classroom}">
                   <div class="form-group">
                     <label for="name">Name</label>
@@ -58,17 +58,6 @@
                   </div>
                 </div>
 
-                <div class="col-sm-6">
-                  <!-- Select multiple-->
-                  <div class="form-group">
-                    <label>Select teacher</label>
-                    <select class="form-control selectpicker" name="list" required multiple>
-                      <option th:each="teacher : ${teachers}"
-                        th:text = "${teacher.getFirstName() + ' ' + teacher.getLastName() }" th:value="${teacher.getId()}">
-                      </option>
-                    </select>
-                  </div>
-                </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">

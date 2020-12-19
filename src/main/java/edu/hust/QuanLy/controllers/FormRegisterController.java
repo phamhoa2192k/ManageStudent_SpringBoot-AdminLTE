@@ -41,12 +41,13 @@ public class FormRegisterController {
     public String getTeacherForm(Model model) {
         model.addAttribute("teacher", new Teacher());
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
+        model.addAttribute("classrooms", infomationForGUIService.getAllClassrooms());
         return "form_teacher";
     }
 
     @PostMapping(value = "/teacher")
-    public String postTeacherRegisterForm(Teacher teacher) {
-        registerService.registerForTeacher(teacher);
+    public String postTeacherRegisterForm(Teacher teacher, String list) {
+        registerService.registerForTeacher(teacher,list);
         return "register_success";
     }
 
@@ -60,8 +61,8 @@ public class FormRegisterController {
     }
 
     @PostMapping(value = "/classroom")
-    public String postClassroomRegisterForm(Classroom classroom, String list) {
-        registerService.registerForClassroom(classroom, list);
+    public String postClassroomRegisterForm(Classroom classroom) {
+        registerService.registerForClassroom(classroom);
         return "register_success";
     }
 

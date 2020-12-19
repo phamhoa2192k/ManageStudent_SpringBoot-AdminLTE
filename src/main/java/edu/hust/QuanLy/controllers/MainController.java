@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import edu.hust.QuanLy.services.InfomationForGUIService;
 
 @Controller
-public class AppController {
+public class MainController {
     @Autowired private InfomationForGUIService infomationForGUIService;
     @GetMapping("/home")
     public String getHomePage(Model model){
@@ -19,6 +19,10 @@ public class AppController {
     @GetMapping("/dashboard")
     public String getDashboardPage(Model model){
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
+        model.addAttribute("totalOfStudents", infomationForGUIService.getAllStudents().size());
+        model.addAttribute("bounceRate", infomationForGUIService.getBounceRate());
+        model.addAttribute("totalOfTeachers", infomationForGUIService.getAllTeachers().size());
+        model.addAttribute("totalOfClassrooms", infomationForGUIService.getAllClassrooms().size());
         return "dashboard";
     }
 
