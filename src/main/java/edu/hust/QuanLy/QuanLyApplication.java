@@ -3,7 +3,9 @@ package edu.hust.QuanLy;
 /*
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
@@ -42,9 +44,9 @@ public class QuanLyApplication implements CommandLineRunner {
 		/*
 		User u1 = new User("admin1@gmail.com", "1");
 
-		List<Student> students = new ArrayList<>();
-		List<Classroom> classrooms = new ArrayList<>();
-		List<Teacher> teachers = new ArrayList<>();
+		Set<Student> students = new HashSet<>();
+		Set<Classroom> classrooms = new HashSet<>();
+		Set<Teacher> teachers = new HashSet<>();
 
 		Student s1 = new Student("pham", "a 1", "a", new Date(2000, 9, 21), "a1@gmail.com", "0987654321");
 		Student s2 = new Student("pham", "a 2", "a", new Date(2000, 9, 21), "a2@gmail.com", "0987654321");
@@ -64,41 +66,18 @@ public class QuanLyApplication implements CommandLineRunner {
 		Teacher t4 = new Teacher("nguyen", "b 4", "a", new Date(1990, 1, 1), "b4@gmail.com", "0123456789");
 		Teacher t5 = new Teacher("nguyen", "b 5", "a", new Date(1990, 1, 1), "b5@gmail.com", "0123456789");
 
-		s1.getClassrooms().add(c1);
-		s2.getClassrooms().add(c1);
-		s3.getClassrooms().add(c1);
-		s4.getClassrooms().add(c1);
-		s5.getClassrooms().add(c1);
-
-		c1.getStudents().add(s1);
-		c1.getStudents().add(s2);
-		c1.getStudents().add(s3);
-		c1.getStudents().add(s4);
-		c1.getStudents().add(s5);
-
-		t1.getClassrooms().add(c1);
-		t2.getClassrooms().add(c2);
-		t3.getClassrooms().add(c3);
-		t4.getClassrooms().add(c4);
-		t5.getClassrooms().add(c5);
-
-		c1.getTeachers().add(t1);
-		c2.getTeachers().add(t2);
-		c3.getTeachers().add(t3);
-		c4.getTeachers().add(t4);
-		c5.getTeachers().add(t5);
-
-		students.add(s1);
-		students.add(s2);
-		students.add(s3);
-		students.add(s4);
-		students.add(s5);
 
 		classrooms.add(c1);
 		classrooms.add(c2);
 		classrooms.add(c3);
 		classrooms.add(c4);
 		classrooms.add(c5);
+		
+		students.add(s1);
+		students.add(s2);
+		students.add(s3);
+		students.add(s4);
+		students.add(s5);
 
 		teachers.add(t1);
 		teachers.add(t2);
@@ -106,10 +85,27 @@ public class QuanLyApplication implements CommandLineRunner {
 		teachers.add(t4);
 		teachers.add(t5);
 
-		userRepository.save(u1);
-		studentRepository.saveAll(students);
 		classroomRepository.saveAll(classrooms);
+		studentRepository.saveAll(students);
 		teacherRepository.saveAll(teachers);
+
+		s1.getClassrooms().add(c1);
+		s2.getClassrooms().add(c1);
+		s3.getClassrooms().add(c1);
+		s4.getClassrooms().add(c1);
+		s5.getClassrooms().add(c1);
+
+		t1.getClassrooms().add(c1);
+		t2.getClassrooms().add(c2);
+		t3.getClassrooms().add(c3);
+		t4.getClassrooms().add(c4);
+		t5.getClassrooms().add(c5);
+
+		userRepository.save(u1);	
+		studentRepository.saveAll(students);
+		teacherRepository.saveAll(teachers);
+
+
 		*/
 	}
 

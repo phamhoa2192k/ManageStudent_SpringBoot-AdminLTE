@@ -37,6 +37,7 @@ public class MainController {
     @GetMapping("/calender")
     public String getCalenderPage(Model model){
         model.addAttribute("emailOfUser", infomationForGUIService.getEmailOfCurrentUser());
+        model.addAttribute("classrooms", infomationForGUIService.getAllClassrooms());
         return "calender";
     }
 
