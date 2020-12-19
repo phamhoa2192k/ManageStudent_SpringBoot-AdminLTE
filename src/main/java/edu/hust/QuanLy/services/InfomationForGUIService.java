@@ -19,5 +19,6 @@ public interface InfomationForGUIService {
     List<Classroom> getAllClassrooms();
     List<Teacher> getAllTeachers();
     List<Student> getAllStudents();
-    
+    List<Integer> getDataForPieChart();
+    List<Integer> getDataForBarChart();
 }

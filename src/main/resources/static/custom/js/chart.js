@@ -1,52 +1,11 @@
 
-let data2 = {
-  labels: [
-    'Chrome',
-    'IE',
-    'FireFox',
-    'Safari',
-    'Opera',
-    'Navigator',
-  ],
-  datasets: [{
-    data: [700, 500, 400, 600, 300, 100],
-    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-  }]
-}
-
-let data1 = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [{
-      label: 'Digital Goods',
-      backgroundColor: 'rgba(60,141,188,0.9)',
-      borderColor: 'rgba(60,141,188,0.8)',
-      pointRadius: false,
-      pointColor: '#3b8bba',
-      pointStrokeColor: 'rgba(60,141,188,1)',
-      pointHighlightFill: '#fff',
-      pointHighlightStroke: 'rgba(60,141,188,1)',
-      data: [28, 48, 40, 19, 86, 27, 90]
-    },
-    {
-      label: 'Electronics',
-      backgroundColor: 'rgba(210, 214, 222, 1)',
-      borderColor: 'rgba(210, 214, 222, 1)',
-      pointRadius: false,
-      pointColor: 'rgba(210, 214, 222, 1)',
-      pointStrokeColor: '#c1c7d1',
-      pointHighlightFill: '#fff',
-      pointHighlightStroke: 'rgba(220,220,220,1)',
-      data: [65, 59, 80, 81, 56, 55, 40]
-    },
-  ]
-}
 
 $(function () {
   //--------------
   //- AREA CHART -
   //--------------
   // Get context with jQuery - using jQuery's .get() method.
-  var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
+  var areaChartCanvas = $('#areaChart').get(0)
   let areaChartOptions = {
     maintainAspectRatio: false,
     responsive: true,
@@ -78,7 +37,7 @@ $(function () {
   //-------------
   //- LINE CHART -
   //--------------
-  var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
+  var lineChartCanvas = $('#lineChart').get(0)
   var lineChartOptions = {
     maintainAspectRatio: false,
     responsive: true,
@@ -120,7 +79,7 @@ $(function () {
   }
   //Create pie or douhnut chart
   // You can switch between pie and douhnut using the method below.
-  let donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+  let donutChartCanvas = $('#donutChart').get(0)
   let donutData = data2;
   var donutChart = new Chart(donutChartCanvas, {
     type: 'doughnut',
@@ -133,7 +92,7 @@ $(function () {
   //- PIE CHART -
   //-------------
   // Get context with jQuery - using jQuery's .get() method.
-  var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+  var pieChartCanvas = $('#pieChart').get(0)
   var pieData = data2;
   var pieOptions = {
     maintainAspectRatio: false,
@@ -151,12 +110,10 @@ $(function () {
   //-------------
   //- BAR CHART -
   //-------------
-  var barChartCanvas = $('#barChart').get(0).getContext('2d')
+  var barChartCanvas = $('#barChart').get(0)
   var barChartData = data1;
-  var temp0 = data1.datasets[0];
-  var temp1 = data1.datasets[1];
-  barChartData.datasets[0] = temp1;
-  barChartData.datasets[1] = temp0;
+  barChartData.datasets[0] = data1.datasets[0];
+
 
   var barChartOptions = {
     responsive: true,
@@ -175,8 +132,7 @@ $(function () {
   //---------------------
   //- STACKED BAR CHART -
   //---------------------
-  var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d');
-  var stackedBarChartData = data1;
+  var stackedBarChartCanvas = $('#stackedBarChart').get(0)
 
   var stackedBarChartOptions = {
     responsive: true,

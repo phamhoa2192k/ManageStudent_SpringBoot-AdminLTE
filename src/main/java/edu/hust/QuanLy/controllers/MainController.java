@@ -23,6 +23,8 @@ public class MainController {
         model.addAttribute("bounceRate", infomationForGUIService.getBounceRate());
         model.addAttribute("totalOfTeachers", infomationForGUIService.getAllTeachers().size());
         model.addAttribute("totalOfClassrooms", infomationForGUIService.getAllClassrooms().size());
+        model.addAttribute("dataForPieChart", infomationForGUIService.getDataForPieChart());
+        model.addAttribute("dataForBarChart", infomationForGUIService.getDataForBarChart());
         return "dashboard";
     }
 

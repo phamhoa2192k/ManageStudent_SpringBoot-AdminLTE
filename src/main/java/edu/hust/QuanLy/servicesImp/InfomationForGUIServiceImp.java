@@ -1,5 +1,6 @@
 package edu.hust.QuanLy.servicesImp;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -51,6 +52,36 @@ public class InfomationForGUIServiceImp implements InfomationForGUIService {
     @Override
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
+    }
+
+    @Override
+    public List<Integer> getDataForPieChart(){
+        List<Integer> li = new ArrayList<Integer>();
+        li.add(1);
+        li.add(1);
+        li.add(1);
+        li.add(1);
+        li.add(1);
+        li.add(0);
+        return li;
+    }
+
+    @Override
+    public List<Integer> getDataForBarChart(){
+        List<Integer> li = new ArrayList<Integer>();
+        li.add(10);
+        li.add(15);
+        li.add(9);
+        li.add(20);
+        li.add(24);
+        li.add(23);
+        li.add(5);
+        li.add(3);
+        li.add(1);
+        li.add(0);
+        li.add(4);
+        li.add(0);
+        return li;
     }
 }
     
