@@ -20,32 +20,113 @@
             <div class="content">
                 <div class="container-fluid">
                     <!------------------------ CONTENT ------------------------------------------>
-                    <div th:replace="components/box/small_box"></div>
+                    <div class="row">
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3 th:text="${totalOfStudents}"></h3>
+                                    <p>Students</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <a href="/table/student" class="small-box-footer">
+                              More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>1</h3>
+                                    <p>Admin</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                              More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3 th:text="${totalOfClassrooms}"></h3>
+
+                                    <p>Classes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <a href="/table/classroom" class="small-box-footer">
+                              More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-3 col-6">
+                            <!-- small card -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3 th:text="${totalOfTeachers}"></h3>
+
+                                    <p>Teachers</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <a href="/table/teacher" class="small-box-footer">
+                              More info <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                    </div>
+                    <!-- /.row -->
                     <div class="row">
                         <div class="col-lg-7">
-                            <div th:replace="components/charts/pie_chart"></div>
+                            <!-- PIE CHART -->
+                            <div class="card card-danger">
+                                <div class="card-header">
+                                    <h3 class="card-title">Pie Chart</h3>
+
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        
+                                        <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
                         <div class="col-lg-5">
                             <div class="card bg-gradient-success" style="position: relative; left: 0px; top: 0px;">
                                 <div class="card-header border-0 ui-sortable-handle">
 
                                     <h3 class="card-title">
-                                        <i class="far fa-calendar-alt"></i>
-                                        Calendar
+                                        <i class="far fa-calendar-alt"></i> Calendar
                                     </h3>
                                     <!-- tools card -->
                                     <div class="card-tools">
                                         <!-- button with a dropdown -->
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle"
-                                                data-toggle="dropdown" data-offset="-52">
+                                            <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                                                 <i class="fas fa-bars"></i></button>
                                             <div class="dropdown-menu" role="menu">
                                                 <a href="/calender" class="dropdown-item">View calendar</a>
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-success btn-sm"
-                                            data-card-widget="collapse">
+                                        <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                         <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
@@ -64,27 +145,41 @@
                             </div>
                         </div>
                     </div>
-                    <div th:replace="components/charts/bar_chart"></div>
-                </div>
+                    <!-- BAR CHART -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Bar Chart</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+        
+                                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="chart">
+                                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
                 <!------------------------ END CONTENT ------------------------------------>
             </div>
-            <!-- FOOTER -->
-            <footer th:replace="/components/footer"></footer>
-            <!-- FOOTER -->
             <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
                 <i class="fas fa-chevron-up"></i>
             </a>
         </div>
     </div>
+    <footer th:replace="/components/footer"></footer>
     <script th:replace="/components/style/script"></script>
-    <script th:src="@{/adminlte/plugins/moment/moment.min.js}"></script>
-    <script  th:inline="javascript" >
+    <script th:inline="javascript">
         $("a[name^='dashboard']").addClass("active");
         $('#calendar').datetimepicker({
             format: 'L',
             inline: true
         })
-        let data2 = {
+        var data2 = {
             labels: [
                 'Mất gốc 1',
                 'Mất gốc 2',
@@ -95,24 +190,24 @@
             ],
             datasets: [{
                 data: [[${dataForPieChart}]],
+
                 backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
             }]
         }
 
-        let data1 = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+        var data1 = {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
             datasets: [{
-                    label: 'New Students',
-                    backgroundColor: 'rgba(60,141,188,0.9)',
-                    borderColor: 'rgba(60,141,188,0.8)',
-                    pointRadius: false,
-                    pointColor: '#3b8bba',
-                    pointStrokeColor: 'rgba(60,141,188,1)',
-                    pointHighlightFill: '#fff',
-                    pointHighlightStroke: 'rgba(60,141,188,1)',
-                    data:  [[${dataForBarChart}]],
-                },
-            ]
+                label: 'New Students',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: [[${dataForBarChart}]],
+            }, ]
         }
     </script>
     <script th:src="@{/custom/js/chart.js}"></script>
