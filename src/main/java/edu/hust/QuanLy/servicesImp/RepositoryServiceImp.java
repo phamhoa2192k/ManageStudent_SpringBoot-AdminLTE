@@ -12,10 +12,10 @@ import edu.hust.QuanLy.entities.Teacher;
 import edu.hust.QuanLy.repositories.ClassroomRepository;
 import edu.hust.QuanLy.repositories.StudentRepository;
 import edu.hust.QuanLy.repositories.TeacherRepository;
-import edu.hust.QuanLy.services.InfomationForGUIService;
+import edu.hust.QuanLy.services.RepositoryService;
 
 @Service
-public class InfomationForGUIServiceImp implements InfomationForGUIService {
+public class RepositoryServiceImp implements RepositoryService {
     @Autowired private ClassroomRepository classroomRepository;
     @Autowired private StudentRepository studentRepository;
     @Autowired private TeacherRepository teacherRepository;
@@ -55,11 +55,11 @@ public class InfomationForGUIServiceImp implements InfomationForGUIService {
     @Override
     public List<Integer> getDataForPieChart(){
         List<Integer> li = new ArrayList<Integer>();
-        li.add(1);
-        li.add(1);
-        li.add(1);
-        li.add(1);
-        li.add(1);
+        li.add(classroomRepository.findById(2l).get().getStudents().size());
+        li.add(classroomRepository.findById(4l).get().getStudents().size());
+        li.add(classroomRepository.findById(5l).get().getStudents().size());
+        li.add(classroomRepository.findById(1l).get().getStudents().size());
+        li.add(classroomRepository.findById(3l).get().getStudents().size());
         li.add(0);
         return li;
     }
@@ -80,6 +80,21 @@ public class InfomationForGUIServiceImp implements InfomationForGUIService {
         li.add(4);
         li.add(0);
         return li;
+    }
+
+    @Override
+    public Classroom findClassroomById(long id){
+        return classroomRepository.findById(id).get();
+    }
+
+    @Override
+    public Student findStudentById(long id){
+        return studentRepository.findById(id).get();
+    }
+
+    @Override
+    public Teacher findTeacherById(long id){
+        return teacherRepository.findById(id).get();
     }
 }
     

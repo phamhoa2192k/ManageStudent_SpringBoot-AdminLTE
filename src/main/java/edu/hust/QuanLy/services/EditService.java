@@ -27,4 +27,8 @@ public interface EditService {
 
     void deleteClassroom(long id);
 
+    void removeStudentFromClassroom(long idstudent, long idclassroom);
+
+    void removeTeacherFromClassroom(long idteacher, long idclassroom);
+
 }

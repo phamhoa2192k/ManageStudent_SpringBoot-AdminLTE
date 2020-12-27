@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hust.QuanLy.entities.Classroom;
 import edu.hust.QuanLy.entities.Student;
 import edu.hust.QuanLy.entities.Teacher;
-import edu.hust.QuanLy.services.InfomationForGUIService;
+import edu.hust.QuanLy.services.RepositoryService;
 import edu.hust.QuanLy.services.RegisterService;
 
 @Controller
 @RequestMapping("/form")
 public class FormRegisterController {
     @Autowired
-    private InfomationForGUIService infomationForGUIService;
+    private RepositoryService infomationForGUIService;
     @Autowired
     private RegisterService registerService;
 

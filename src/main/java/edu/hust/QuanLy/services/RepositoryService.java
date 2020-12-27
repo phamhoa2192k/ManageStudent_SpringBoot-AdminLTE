@@ -12,7 +12,7 @@ import edu.hust.QuanLy.entities.Teacher;
  * Interface cung cấp các phương thức tìm kiếm thông tin phục vụ cho giao diện phía người dùng
  */
 @Service
-public interface InfomationForGUIService {
+public interface RepositoryService {
     void setEmailOfCurrentUser(String email);
     String getEmailOfCurrentUser();
     String getBounceRate();
@@ -21,4 +21,7 @@ public interface InfomationForGUIService {
     List<Student> getAllStudents();
     List<Integer> getDataForPieChart();
     List<Integer> getDataForBarChart();
+    Classroom findClassroomById(long id);
+    Student findStudentById(long id);
+    Teacher findTeacherById(long id);
 }

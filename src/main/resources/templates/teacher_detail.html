@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+
+<head>
+    <title>Teacher</title>
+    <style th:replace="/components/style/style"></style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+        <!-- NAVBAR AND SIDEBAR -->
+        <div th:replace="/components/navbar"></div>
+        <div th:replace="/components/sidebar"></div>
+        <!-- END NAVBAR AND SIDEBAR -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <section class="content-header container-fluid">
+                    <h3>Details for teacher: <strong th:text="*{teacher.getFirstName()} +' '+ *{teacher.getLastName()}"></strong></h4>
+                </section>
+                <div class="content">
+                    <!------------------------ CONTENT ------------------------------------------>
+                    <!-- general form elements -->
+
+                    <div class="card card-danger">
+                        <!-- form start -->
+                        <form role="form" action="/table/teacher/edit" method="POST">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="id">ID</label>
+                                    <input type="text" class="form-control" id="id" th:value="*{teacher.getId()}" name="id" readonly="readonly">
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <label for="firstname">First name</label>
+                                        <input type="text" class="form-control" id="firstname" placeholder="Enter first name" th:value="*{teacher.getFirstName()}" name="firstName" required>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <label for="lastname">Last name</label>
+                                        <input type="text" class="form-control" id="lastname" placeholder="Enter last name" th:value="*{teacher.getLastName()}" name="lastName" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birthday">Birthday</label>
+                                    <input type="date" class="form-control" id="birthday" placeholder="Birthday" th:value="*{teacher.getBirthday()}" name="birthday" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" th:value="*{teacher.getEmail()}" name="email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Address" th:value="*{teacher.getAddress()}" name="address" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="phone">Phone number</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Phone number" th:value="*{teacher.getPhoneNumber()}" name="phoneNumber" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Class registered</label>
+                                    <input type="text" class="form-control" th:value="*{teacher.getClassroomsString()}" disabled>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <!-- Select multiple-->
+                                    <div class="form-group">
+                                        <label>Select new classrooms</label>
+                                        <select class="form-control selectpicker" name="list" multiple>
+                                            <option th:each="classroom : ${classrooms}" th:text="${classroom.getName()}"
+                                            th:value="${classroom.getId()}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Save changes</button>
+                            </div>
+                            <!-- /.card-body -->
+                        </form>
+                        <div class="card-footer">
+
+                            <button class='btn btn-danger btn-block' data-toggle="modal" th:attr="data-target='#deleteTeacher' + *{teacher.getId()}">Delete</button>
+
+                        </div>
+
+
+                        <div class="modal fade" tabindex="-1" role="dialog" th:id="deleteTeacher + *{teacher.getId()}">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Delete forever this student?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>This teacher's information will be removed from database (Cannot undo)</p>
+                                        <a class='btn btn-danger' th:href="@{/table/teacher/{id}/delete(id = *{teacher.getId()})}">Delete</a>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                    <!------------------------ END CONTENT ------------------------------------>
+                </div>
+                <div class="content-footer container-fluid"></div>
+            </div>
+        </div>
+        <footer th:replace="/components/footer"></footer>
+        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <script th:replace="components/style/script.html"></script>
+</body>
+
+</html>

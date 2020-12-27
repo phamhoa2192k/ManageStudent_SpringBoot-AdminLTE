@@ -50,20 +50,10 @@
                                         <td th:text="*{student.getEmail()}"></td>
                                         <td th:text="*{student.getPhoneNumber()}"></td>
                                         <td>
-                                            <div class="row">
-                                                <button class='btn btn-success col-sm-6'
-                                                    data-toggle="modal"
-                                                    th:attr="data-target = '#editStudent' + *{student.getId()}">Edit</button>
-
-                                                <button class='btn btn-danger col-sm-6'
-                                                    data-toggle="modal"
-                                                    th:attr="data-target = '#deleteStudent' + *{student.getId()}">Delete</button>
-                                            </div>
-                                            <div th:replace="/components/form_edit_student"></div>
-                                            <div th:replace="/components/form_delete_student"></div>
+                                            <a class = "btn btn-primary" th:href="@{/table/student/{id}(id = *{student.getId()})}">Detail</a>
                                         </td>
                                     </tr>
-                                </tbody>
+                                </tbody> 
                             </table>
                         </div>
                     </div>
@@ -88,9 +78,7 @@
     <script th:src="@{/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
 
     <script>
-        $(document).ready(function () {
-            $('#studentTable').DataTable();
-        });
+        $('#studentTable').DataTable();
         $("a[name^='table']").addClass("active");
         $("a[name^='table_teacher']").removeClass("active");
         $("a[name^='table_classroom']").removeClass("active");

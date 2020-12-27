@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.servicesImp;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,20 +16,25 @@ import edu.hust.QuanLy.services.EditService;
 
 @Service
 public class EditServiceImp implements EditService {
-    @Autowired private StudentRepository studentRepository;
-    @Autowired private TeacherRepository teacherRepository;
-    @Autowired private ClassroomRepository classroomRepository;
+    @Autowired
+    private StudentRepository studentRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
+    @Autowired
+    private ClassroomRepository classroomRepository;
 
     // STUDENT
     @Override
     public void editStudent(Student student, String listIdClassrooms) {
-        String[] listId = listIdClassrooms.split(",");
-        Set<Classroom> classrooms = new HashSet<Classroom>();
-        for(String Id : listId ){
-            Classroom classroom = classroomRepository.findById(Long.parseLong(Id)).get();
-            classrooms.add(classroom);
+        if (listIdClassrooms != null) {
+            String[] listId = listIdClassrooms.split(",");
+            Set<Classroom> classrooms = new HashSet<Classroom>();
+            for (String Id : listId) {
+                Classroom classroom = classroomRepository.findById(Long.parseLong(Id)).get();
+                classrooms.add(classroom);
+            }
+            student.setClassrooms(classrooms);
         }
-        student.setClassrooms(classrooms);
         studentRepository.save(student);
     }
 
@@ -42,13 +46,15 @@ public class EditServiceImp implements EditService {
     // TEACHER
     @Override
     public void editTeacher(Teacher teacher, String listIdClassrooms) {
-        String[] listId = listIdClassrooms.split(",");
-        Set<Classroom> classrooms = new HashSet<Classroom>();
-        for(String Id : listId ){
-            Classroom classroom = classroomRepository.findById(Long.parseLong(Id)).get();
-            classrooms.add(classroom);
+        if (listIdClassrooms != null) {
+            String[] listId = listIdClassrooms.split(",");
+            Set<Classroom> classrooms = new HashSet<Classroom>();
+            for (String Id : listId) {
+                Classroom classroom = classroomRepository.findById(Long.parseLong(Id)).get();
+                classrooms.add(classroom);
+            }
+            teacher.setClassrooms(classrooms);
         }
-        teacher.setClassrooms(classrooms);
         teacherRepository.save(teacher);
     }
 
@@ -60,12 +66,31 @@ public class EditServiceImp implements EditService {
     // CLASSROOM
     @Override
     public void editClassroom(Classroom classroom) {
+        Classroom c = classroomRepository.findById(classroom.getId()).get();
+        classroom.setStudents(c.getStudents());
+        classroom.setTeachers(c.getTeachers());
         classroomRepository.save(classroom);
     }
 
     @Override
     public void deleteClassroom(long id) {
         classroomRepository.deleteById(id);
+    }
+
+    @Override
+    public void removeStudentFromClassroom(long idstudent, long idclassroom) {
+        Classroom c = classroomRepository.findById(idclassroom).get();
+        Student s = studentRepository.findById(idstudent).get();
+        c.getStudents().remove(s);
+        classroomRepository.save(c);
+    }
+
+    @Override
+    public void removeTeacherFromClassroom(long idteacher, long idclassroom) {
+        Classroom c = classroomRepository.findById(idclassroom).get();
+        Teacher t = teacherRepository.findById(idteacher).get();
+        c.getTeachers().remove(t);
+        classroomRepository.save(c);
     }
 
 }

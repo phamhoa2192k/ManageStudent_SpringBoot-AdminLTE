@@ -1,6 +1,5 @@
 package edu.hust.QuanLy.entities;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,7 @@ public class User {
 
     @Column(name = "email")
     private String email;
-    
+
     @Column(name = "password")
     private String password;
 
@@ -32,5 +31,4 @@ public class User {
     public User() {
     }
 
-    
 }

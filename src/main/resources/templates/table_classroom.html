@@ -48,19 +48,10 @@
                                         <td th:text="*{classroom.getMaxStudent()}"></td>
                                         <td th:text="*{classroom.getTuition()}"></td>
                                         <td>
-                                            <div class="row">
-                                                <button class='btn btn-success col-sm-6'
-                                                    data-toggle="modal"
-                                                    th:attr="data-target = '#editClassroom' + *{classroom.getId()}">Edit</button>
-
-                                                <button class='btn btn-danger col-sm-6'
-                                                    data-toggle="modal"
-                                                    th:attr="data-target = '#deleteClassroom' + *{classroom.getId()}">Delete</button>
-                                            </div>
-                                            <div th:replace="/components/form_edit_classroom"></div>
-                                            <div th:replace="/components/form_delete_classroom"></div>
+                                                <a class = "btn btn-primary" th:href="@{/table/classroom/{id}(id = *{classroom.getId()})}">Details</a>
                                         </td>
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -81,9 +72,7 @@
     <script th:src="@{/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js}"></script>
     <script th:src="@{/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js}"></script>
     <script>
-        $(document).ready(function () {
-            $('#classroomTable').DataTable();
-        });
+        $('#classroomTable').DataTable();
         $("a[name^='table']").addClass("active");
         $("a[name^='table_teacher']").removeClass("active");
         $("a[name^='table_student']").removeClass("active");
